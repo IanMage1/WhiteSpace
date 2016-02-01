@@ -38,6 +38,27 @@ function checkAuth($redirectIfNeeded) {
 	}
 }
 ?>
+</head>
+<body>
+<nav>
+
+<a href="index.php">Home</a>
+<?php
+if (checkAuth(false) == "") {
+?>
+<a href="add_user.php">Register</a>
+<a href="login.php">Login</a>
+<?php
+}
+else {
+?>
+<a href="logout.php?cb=<?= microtime(true) ?>">Logout</a>
+<?php
+}
+?>
+
+</nav>
+<main>
 <?php
 ini_set('display_errors', 'On');
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu", "leonl-db", "mCvXbcy9WsvzmzJ9", "leonl-db");
