@@ -12,32 +12,38 @@ if (!$mysqli->query("create table Users(uid integer, username varchar(64), passw
 }
 
 
-//dummy data:
-$mysqli->query("insert into Users(uid,username,password,score) values(932446782,'IanMage', 'pwdfje53', 764)");
-$mysqli->query("insert into Users(uid,username,password,score) values(932784747,'loser', 'dsfgre5', 0)");
-$mysqli->query("insert into Users(uid,username,password,score) values(932675478,'Louis', 'dferyr7', 967)");
-$mysqli->query("insert into Users(uid,username,password,score) values(932089506,'SuperWhiteSpaceWinnerMaster', 'srghery9', 990849)");
+//User dummy data:
+$mysqli->query("insert into Users(uid,username,password,score) values(932446782,'John', 'magenhej', 764)");
+$mysqli->query("insert into Users(uid,username,password,score) values(932784747,'loser', 'losern', 0)");
+$mysqli->query("insert into Users(uid,username,password,score) values(932675478,'Louis', 'leonl', 967)");
+$mysqli->query("insert into Users(uid,username,password,score) values(932089506,'SuperWhiteSpaceWinnerMaster', 'superm', 990849)");
+$mysqli->query("insert into Users(uid,username,password,score) values(932907748,'Andrew', 'soltesza', 980)");
+$mysqli->query("insert into Users(uid,username,password,score) values(932094459,'William', 'selbiew', 960)");
+$mysqli->query("insert into Users(uid,username,password,score) values(932345345, 'Trevor', 'swopet', 1000)");
 
+//Pictures dummy data:
 $mysqli->query("insert into Pictures(pid,name,pts,hs) values(1,'coke',800, 700)");
 $mysqli->query("insert into Pictures(pid,name,pts,hs) values(2,'pepsi',800, 750)");
 $mysqli->query("insert into Pictures(pid,name,pts,hs) values(3,'kitkat',800, 600)");
 $mysqli->query("insert into Pictures(pid,name,pts,hs) values(4,'herhsey',800, 780)");
 
 
-//to print the uid, username, and score of each user from Users:
+printf("Sorted Leaderboard (score, username):\n");
 echo "<table>";
-if ($result = $mysqli->query("select uid,username,score from Users")) {
+if ($result = $mysqli->query("SELECT username,score FROM Users ORDER BY score DESC")) { //prepares to print table in descending order
     while($obj = $result->fetch_object()){ 
             echo "<tr>";
-            echo "<td>".htmlspecialchars($obj->uid)."</td>"; 
+            echo "<td>".htmlspecialchars($obj->score)."</td>"; 
             echo "<td>".htmlspecialchars($obj->username)."</td>"; 
-            echo "<td>".htmlspecialchars($obj->score)."</td>";  
+            //echo "<td>".htmlspecialchars($obj->uid)."</td>";  
             echo "</tr>";
     } 
 }
 echo "</table>";
-
+printf(" \n");
+printf(" \n");
 //to print the pid (picture id), name, points [worth], and hs (highest score) of each picture from Pictures:
+printf("Pictures (pid, name, pts, hs): \n");
 echo "<table>";
 if ($result = $mysqli->query("select pid,name,pts,hs from Pictures")) {
     while($obj = $result->fetch_object()){ 
@@ -50,6 +56,7 @@ if ($result = $mysqli->query("select pid,name,pts,hs from Pictures")) {
     } 
 }
 echo "</table>";
+
 
 
 $mysqli->close();
