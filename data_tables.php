@@ -11,6 +11,8 @@ if (!$mysqli->query("create table Users(uid integer, username varchar(64), passw
     printf("Cannot create table(s).\n");
 }
 
+
+//dummy data:
 $mysqli->query("insert into Users(uid,username,password,score) values(932446782,'IanMage', 'pwdfje53', 764)");
 $mysqli->query("insert into Users(uid,username,password,score) values(932784747,'loser', 'dsfgre5', 0)");
 $mysqli->query("insert into Users(uid,username,password,score) values(932675478,'Louis', 'dferyr7', 967)");
@@ -22,6 +24,7 @@ $mysqli->query("insert into Pictures(pid,name,pts,hs) values(3,'kitkat',800, 600
 $mysqli->query("insert into Pictures(pid,name,pts,hs) values(4,'herhsey',800, 780)");
 
 
+//to print the uid, username, and score of each user from Users:
 echo "<table>";
 if ($result = $mysqli->query("select uid,username,score from Users")) {
     while($obj = $result->fetch_object()){ 
@@ -34,10 +37,7 @@ if ($result = $mysqli->query("select uid,username,score from Users")) {
 }
 echo "</table>";
 
-echo "<tr>";
-echo " ";
-echo "<tr>";
-
+//to print the pid (picture id), name, points [worth], and hs (highest score) of each picture from Pictures:
 echo "<table>";
 if ($result = $mysqli->query("select pid,name,pts,hs from Pictures")) {
     while($obj = $result->fetch_object()){ 
@@ -50,6 +50,7 @@ if ($result = $mysqli->query("select pid,name,pts,hs from Pictures")) {
     } 
 }
 echo "</table>";
+
 
 $mysqli->close();
 ?>
