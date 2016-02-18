@@ -48,6 +48,7 @@ if (checkAuth(false) == "") {
 ?>
 <a href="add_user.php">Register</a>
 <a href="login.php">Login</a>
+<a href="leaderboard.php">Leaderboard</a>
 <?php
 }
 else {
