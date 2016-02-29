@@ -4,7 +4,7 @@ var ctx = c.getContext("2d");
 var tiles = [];
 
 var logo = {
-	id: 0,
+	address: "",
 	width: 0,
 	height: 0,
 	widthTiles: 0,
@@ -14,13 +14,15 @@ var logo = {
 
 function Start() {
 	//request new game from server
-	$.ajax({url: "new_game.php", 
+	$.ajax({
+		url: "new_game.php", 
+		type: "POST",
 		success: function(result) {
 			console.log("response from new_game.php: " + result);
 			
 			//parse received string
 			var a = result.split(" ");
-			logo.id = parseInt(a[0]);
+			logo.address = a[0];
 			logo.width = parseInt(a[1]);
 			logo.height = parseInt(a[2]);
 			logo.widthTiles = a[3];
@@ -57,7 +59,14 @@ c.addEventListener('click',function(event) {
 		var r = "";
 	
 		//get base64 encoded image fragment from server
-		$.ajax({url:"get_image_frag.php?id=" + logo.id + "&x=" + Math.floor(clickPos.x/(logo.width/logo.widthTiles)) + "&y=" + Math.floor(clickPos.y/(logo.height/logo.heightTiles)),
+		$.ajax({url:"get_image_frag.php?address=" + logo.address + 
+			"&w=" + logo.width + 
+			"&h=" + logo.height + 
+			"&wT=" + logo.widthTiles + 
+			"&hT=" + logo.heightTiles + 
+			"&x=" + Math.floor(clickPos.x/(logo.width/logo.widthTiles)) + 
+			"&y=" + Math.floor(clickPos.y/(logo.height/logo.heightTiles)),
+			type: "POST",
 			success: function(result) {
 				r = result;
 				var img = new Image();
@@ -70,5 +79,16 @@ c.addEventListener('click',function(event) {
 		});
 	}
 });
+
+function validateGuess(frm) {
+	var guess = document.getElementById("guess").value;
+	
+	$.ajax({url:"validate_guess.php?guess=" + guess + "&path=" + logo.address, 
+		type: "POST", 
+		success: function(result) {
+			console.log(result)
+		}
+	});
+}
 
 Start();
