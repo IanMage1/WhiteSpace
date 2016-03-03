@@ -13,6 +13,11 @@
 			echo '<p id="score">Score: ' . $score . '</p>';
 		?>
 		<canvas id="game"></canvas>
+		<form action="javascript:" onsubmit="validateGuess(this)" class="guessForm">
+			Guess: <br>
+			<input type="text" name="guess" id="guess">
+			<input type="submit" value="submit">
+		</form>
 		<script src="JS/gamescript.js"></script>
 	</body>
 </HTML>

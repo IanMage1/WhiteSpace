@@ -1,13 +1,17 @@
 <?php
-	$id = $_GET["id"];
+	$address = $_GET["address"];
 	$x = $_GET["x"];
 	$y = $_GET["y"];
+	$w = $_GET["w"];
+	$h = $_GET["h"];
+	$wT = $_GET["wT"];
+	$hT = $_GET["hT"];
 	
-	$width = 760/20; //GET THESE FROM DB (width/number of sections in x direction)
-	$height = 500/20; //GET THESE FROM DB (width/number of sections in y direction)
+	$width = $w/$wT; //GET THESE FROM DB (width/number of sections in x direction)
+	$height = $h/$hT; //GET THESE FROM DB (width/number of sections in y direction)
 	
-	//get image from DB using id CURRENTLY THIS IS HARD CODED
-	$image = @imagecreatefromjpeg("logo.jpg");
+	//get image from DB using id
+	$image = @imagecreatefromjpeg($address);
 	
 	//make sure image was loaded properly
 	if(!$image) {
