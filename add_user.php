@@ -1,11 +1,10 @@
 <?php include("_header.php");?>
 
-<h1>Register</h1>
-
+<div id="login">
 <form method="post" action='add_user_receive.php' class="inform">
 <ul>
-<li><label>Username:</label> <input type="text" name="username">
-<li><label>Password:</label> <input type="password" name="password">
+<li><label>Username <br></label> <input type="text" name="username">
+<li><label><br>Password <br></label> <input type="password" name="password">
 <li><input type=submit>
 </ul>
 </form>

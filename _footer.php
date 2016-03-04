@@ -10,7 +10,10 @@ if (!(checkAuth(false) == "")) {
 <p>logged in as <?php echo htmlspecialchars($name) ?> </p>
 <?php
 		}
-	} 
+	}
 ?>
-</main></body></html>
+</main>
+<div id="footer">
+<p>Copyright and what not here.</p>
+</div></body></html>
 <?php mysqli_close($mysqli); ?>

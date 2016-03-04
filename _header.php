@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 function currentUrl() {
 	$pageURL = 'http';
@@ -27,8 +27,8 @@ function checkAuth($redirectIfNeeded) {
 		// rawurlencode converts the string so it's safe to pass as a URL GET parameter
 		$urlOfLogin = "login.php?sendBackTo=".rawurlencode($currentUrl)."&cb=".microtime(true);
 
-		// use a JavaScript redirect; FYI, there's also an http header (Location:) that 
-		//    can be used to redirect, but that MUST be sent before any HTML, and this 
+		// use a JavaScript redirect; FYI, there's also an http header (Location:) that
+		//    can be used to redirect, but that MUST be sent before any HTML, and this
 		//    function (checkAuth) might be called after some HTML is sent
 		echo "<script>location.replace('$urlOfLogin');</script>";
 		return "";
@@ -38,28 +38,32 @@ function checkAuth($redirectIfNeeded) {
 	}
 }
 ?>
+<head>
+<link rel="stylesheet" type="text/css" href="CSS/newstyle.css">
 </head>
 <body>
+<main>
 <nav>
 
-<a href="index.php">Home</a>
+<div id="nav">
+<ul id="menu">
+<li><a href="index.php">Home</a>
 <?php
 if (checkAuth(false) == "") {
 ?>
-<a href="add_user.php">Register</a>
-<a href="login.php">Login</a>
-<a href="leaderboard.php">Leaderboard</a>
+<li><a href="add_user.php">Register</a>
+<li><a href="login.php">Login</a>
+<li><a href="leaderboard.php">Leaderboard</a>
 <?php
 }
 else {
 ?>
-<a href="logout.php?cb=<?= microtime(true) ?>">Logout</a>
+<li><a href="logout.php?cb=<?= microtime(true) ?>">Logout</a>
 <?php
 }
 ?>
 
 </nav>
-<main>
 <?php
 ini_set('display_errors', 'On');
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu", "leonl-db", "mCvXbcy9WsvzmzJ9", "leonl-db");
