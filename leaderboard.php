@@ -5,41 +5,9 @@
 <?php
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu", "leonl-db", "mCvXbcy9WsvzmzJ9", "leonl-db");
 
-//$mysqli->query("drop table Users");
-
-
-
-//if (!$mysqli->query("create table Users(uid integer, username varchar(64), password varchar(64), score integer, primary key(uid))")) {
-//    printf("Cannot create table(s).\n");
-//}
-
-
-//Users dummy data:
-//$mysqli->query("insert into Users(uid,username,password,score) values(932446782,'John', 'magenhej', 764)");
-//$mysqli->query("insert into Users(uid,username,password,score) values(932784747,'loser', 'losern', 0)");
-//$mysqli->query("insert into Users(uid,username,password,score) values(932675478,'Louis', 'leonl', 967)");
-//$mysqli->query("insert into Users(uid,username,password,score) values(932089506,'SuperWhiteSpaceWinnerMaster', 'superm', 990849)");
-//$mysqli->query("insert into Users(uid,username,password,score) values(932907748,'Andrew', 'soltesza', 980)");
-//$mysqli->query("insert into Users(uid,username,password,score) values(932094459,'William', 'selbiew', 960)");
-//$mysqli->query("insert into Users(uid,username,password,score) values(932345345, 'Trevor', 'swopet', 1000)");
-
-
-//if ($stmt = $mysqli->prepare("insert into Users(uid,username,password,score) values(?,?,?,?)")) {
-//  for ($uid = 1; $uid < 1000; $uid++) {
-//   $username = "uid" . $uid;
-//    $password =  'password';
-//    $score = 500;
-//    $stmt->bind_param("issi", $uid, $username, $password, $score);
-//    $stmt->execute();
-//  }
-//  $stmt->close();
-//} else {
-//  printf("Error: %s\n", $mysqli->error);
-//}
-
 
 echo "<table>";
-if ($result = $mysqli->query("SELECT username,score FROM Users ORDER BY score DESC")) { //prepares to print table in descending order by score
+if ($result = $mysqli->query("SELECT username,score FROM users ORDER BY score DESC")) { //prepares to print table in descending order by score
     while($obj = $result->fetch_object()){ 
             echo "<tr>";
             echo "<td>".htmlspecialchars($obj->score)."</td>"; 

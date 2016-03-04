@@ -14,6 +14,29 @@ if (!$mysqli->query("create table users(uid integer NOT NULL AUTO_INCREMENT, use
     printf("Cannot create table(s).\n");
 }
 
+//Users dummy data:
+$mysqli->query("insert into users(uid,username,password,score) values(932446782,'John', 'magenhej', 764)");
+$mysqli->query("insert into users(uid,username,password,score) values(932784747,'loser', 'losern', 0)");
+$mysqli->query("insert into users(uid,username,password,score) values(932675478,'Louis', 'leonl', 967)");
+$mysqli->query("insert into users(uid,username,password,score) values(932089506,'SuperWhiteSpaceWinnerMaster', 'superm', 990849)");
+$mysqli->query("insert into users(uid,username,password,score) values(932907748,'Andrew', 'soltesza', 980)");
+$mysqli->query("insert into users(uid,username,password,score) values(932094459,'William', 'selbiew', 960)");
+$mysqli->query("insert into users(uid,username,password,score) values(932345345, 'Trevor', 'swopet', 1000)");
+
+
+if ($stmt = $mysqli->prepare("insert into users(uid,username,password,score) values(?,?,?,?)")) {
+  for ($uid = 1; $uid < 1000; $uid++) {
+   $username = "uid" . $uid;
+    $password =  'password';
+    $score = 500;
+    $stmt->bind_param("issi", $uid, $username, $password, $score);
+    $stmt->execute();
+  }
+  $stmt->close();
+} else {
+  printf("Error: %s\n", $mysqli->error);
+}
+
 print("initialized");
 
 } else {
