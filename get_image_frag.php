@@ -1,4 +1,7 @@
 <?php
+	session_start();
+	
+	/*
 	$address = $_GET["address"];
 	$x = $_GET["x"];
 	$y = $_GET["y"];
@@ -6,9 +9,19 @@
 	$h = $_GET["h"];
 	$wT = $_GET["wT"];
 	$hT = $_GET["hT"];
+	*/
 	
-	$width = $w/$wT; //GET THESE FROM DB (width/number of sections in x direction)
-	$height = $h/$hT; //GET THESE FROM DB (width/number of sections in y direction)
+	$x = $_GET["x"];
+	$y = $_GET["y"];
+	
+	$address = $_SESSION["imgPath"];
+	$w = $_SESSION["imgWidth"];
+	$h = $_SESSION["imgHeight"];
+	$wT = $_SESSION["widthTiles"];
+	$hT = $_SESSION["heightTiles"];
+	
+	$width = $w/$wT; //width/number of sections in x direction
+	$height = $h/$hT; //height/number of sections in y direction
 	
 	//get image from DB using id
 	$image = @imagecreatefromjpeg($address);
@@ -30,7 +43,7 @@
 	$dest = imagecreatetruecolor($width, $height);
 	imagecopy($dest, $image, 0, 0, $width*$x, $height*$y, $width, $height);
 	
-	//decrement score here
+	$_SESSION["score"] = $_SESSION["score"] - 1;
 	
 	//output to browser
 	output($dest);
@@ -43,7 +56,7 @@
 			$output = ob_get_contents();
 		ob_end_clean();
 		//echo encoded image
-		echo base64_encode($output);
+		echo base64_encode($output) . " " . $_SESSION["score"];
 		return;
 	}
 	

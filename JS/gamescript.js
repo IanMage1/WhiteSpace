@@ -3,6 +3,8 @@ var ctx = c.getContext("2d");
 
 var tiles = [];
 
+var score = 0;
+
 var logo = {
 	address: "",
 	width: 0,
@@ -27,7 +29,11 @@ function Start() {
 			logo.height = parseInt(a[2]);
 			logo.widthTiles = a[3];
 			logo.heightTiles = a[4];
-		
+			//set score
+			score = a[5];
+			
+			WriteScore(score);
+			
 			//set up canvas
 			c.width = logo.width;
 			c.height = logo.height;
@@ -56,29 +62,29 @@ c.addEventListener('click',function(event) {
 	
 	if(tile == 0) {
 	
-		var r = "";
-	
 		//get base64 encoded image fragment from server
-		$.ajax({url:"get_image_frag.php?address=" + logo.address + 
-			"&w=" + logo.width + 
-			"&h=" + logo.height + 
-			"&wT=" + logo.widthTiles + 
-			"&hT=" + logo.heightTiles + 
+		$.ajax({url:"get_image_frag.php?address=" + logo.address +  
 			"&x=" + Math.floor(clickPos.x/(logo.width/logo.widthTiles)) + 
 			"&y=" + Math.floor(clickPos.y/(logo.height/logo.heightTiles)),
 			type: "POST",
 			success: function(result) {
-				r = result;
+				var a = result.split(" ");
 				var img = new Image();
-				img.src = 'data:image/jpeg;base64,' + r;
+				img.src = 'data:image/jpeg;base64,' + a[0];
 				//draw new image fragment
 				ctx.drawImage(img, clickPos.x-clickPos.x%(logo.width/logo.widthTiles), clickPos.y-clickPos.y%(logo.height/logo.heightTiles));
 				//set tile to 1 in array so we know if this tile has been clicked
 				tiles[Math.floor(clickPos.x/(c.clientWidth/logo.heightTiles))][Math.floor(clickPos.y/(c.clientHeight/logo.heightTiles))] = 1;
+				//display updated score
+				WriteScore(a[1]);
 			}
 		});
 	}
 });
+
+function WriteScore(s) {
+	$("#score").html("Score: " + s);
+}
 
 function validateGuess(frm) {
 	var guess = document.getElementById("guess").value;
@@ -86,7 +92,21 @@ function validateGuess(frm) {
 	$.ajax({url:"validate_guess.php?guess=" + guess + "&path=" + logo.address, 
 		type: "POST", 
 		success: function(result) {
-			console.log(result)
+			var a = result.split(" ");
+			if(a[0] == "1") {
+				//user has won. display winning message here
+				console.log("That's correct!");
+			}
+			else if(a[0] == "2") {
+				//user is out of points. End the game.
+				console.log("game Over!")
+				WriteScore(0);
+			}
+			else {
+				//user has guessed wrong. decrement score here.
+				console.log("Wrong!");
+				WriteScore(a[1]);
+			}
 		}
 	});
 }
