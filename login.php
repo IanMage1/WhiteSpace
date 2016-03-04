@@ -1,5 +1,7 @@
 <?php include("_header.php");?>
 
+<h1>Log in</h1>
+
 <?php
 
 // where is the user trying to get back to, after logging in?
@@ -15,12 +17,12 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 	$query->bind_param("ss",$username, $hashedPassword);
 	if ($query->execute()) {
 		$query->bind_result($uid);
-		while($query->fetch()){
+		while($query->fetch()){ 
 			// if any rows come back, then the login is valid
 			$_SESSION["uid"] = $uid;
 			echo "<script>location.replace(".json_encode($sendBackTo).");</script>";
 			exit();
-		}
+		} 
 		$query->close();
 	}
 	echo "Please enter a valid username and password.";
@@ -28,16 +30,16 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 ?>
 
-<div id="login">
+<div id = "login">
 <form method="post" action='login.php' class="inform">
 <ul>
-<li><label>Username <br></label> <input type="text" name="username">
-<li><label><br>Password <br></label> <input type="password" name="password">
-<li><br><input type=submit>
+<li><label>Username:</label> <input type="text" name="username">
+<li><label>Password:</label> <input type="password" name="password">
+<li><input type=submit>
 </ul>
-<input type="hidden" name="sendBackTo"
+<input type="hidden" name="sendBackTo" 
 	value="<?= htmlspecialchars($sendBackTo) ?>">
-  </form></div>
-
+</form>
+</div>
 
 <?php include("_footer.php");?>
