@@ -30,15 +30,16 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 ?>
 
+<div id = "login">
 <form method="post" action='login.php' class="inform">
 <ul>
 <li><label>Username:</label> <input type="text" name="username">
-<li><label>Password:</label> <input type="text" name="password">
+<li><label>Password:</label> <input type="password" name="password">
 <li><input type=submit>
 </ul>
 <input type="hidden" name="sendBackTo" 
 	value="<?= htmlspecialchars($sendBackTo) ?>">
 </form>
-
+</div>
 
 <?php include("_footer.php");?>
