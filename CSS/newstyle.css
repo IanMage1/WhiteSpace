@@ -1,61 +1,101 @@
-#nav {
-  width: 100%;
-  height: 5%;
-  color: #4b31ac;;
-  text-align: center;
-  border-style: none;
-  border-bottom-style: solid;
-  border-color: #856fd7;
-  padding: 0px 0px 0px 0px;
+body {
+	background-color: #fff;
+	color: #777;
+	font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	margin: 0px 0px 0px 0px;
 }
 
-#footer {
+header {
+	width: 100%;
+	height: 5%;
+	color: #4b31ac;
+	background-color: #1e1e16;
+	border-style: none;
+	border-bottom-style: solid;
+	border-color: #856fd7;
+	padding: 0px 0px 0px 0px;
+}
+
+header #logo {
+	float: left;
+	height: 110%;
+}
+
+header nav {
+	float: right;
+}
+
+header nav #menu {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+header nav #menu li {
+	float: left;
+	display: inline-block;
+}
+
+header nav #menu li a {
+	color: #AAA;
+	height: 100%;
+	display: block;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+	padding: 0px 16px;
+}
+
+header nav #menu li a:hover {
+  color: #AAA;
+  background-color: #454533;
+}
+
+footer {
   height: 10%;
   width: 100%;
   margin-top: 10%; 
   padding: 0px 0px 0px 0px;
   text-align: center;
-  color: #4b31ac;
+  color: #444;
+  background-color: #1e1e16;
   border-style: none;
   border-top-style: solid;
   border-color: #856fd7;
 }
 
-ul#menu li {
-  display: inline;
+#gameContent {
+	width: 80%;
+	display: inline-block;
+	text-align: center;
 }
 
-ul#menu li a {
-  text-decoration: none;
-  color: #4b31ac;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 3%;
-  padding-right: 3%;
-  margin-right: 5%;
+#gameContent #score {
+	
 }
 
-ul#menu li a:hover {
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 3%;
-  padding-right: 3%;
-  background-color: orange;
-  border-radius: 3px;
+#gameContent #guessForm {
+	width: 100%;
+	background-color: #EEE;
 }
 
 #login {
-  height: 20%;
   width: 20%;
+  background-color: #EEE;
   margin-top: 15%;
   margin-bottom: 15%;
   margin-left: 40%;
   margin-right: 40%;
-  padding-top: 20px;
-  border-radius: 20px;
   color: black;
 }
 
+#login h2 {
+	color: white;
+	padding: 10px 0px 10px 0px;
+	background-color: #856fd7;
+	text-align: center;
+}
 
 table {
   width: 80%;
@@ -98,27 +138,32 @@ ul {
   }
 
 input[type="text"] {
-  width: 80%;
-  height: 20px;
-  border-style: solid;
-  border-color: black;
-  border-radius: 6px;
+	width: 80%;
+	height: 20px;
+	border-style: none;
+	background-color: #DDD;
+}
+
+input[type="text"]:focus {
+	background-color: #CCC;
+}
+
+input[type="password"]:focus {
+	background-color: #CCC;
 }
 
 input[type="password"] {
-  width: 80%;
-  height: 20px;
-  border-style: solid;
-  border-color: #856fd7;
-  border-radius: 6px;
+	width: 80%;
+	height: 20px;
+	border-style: none;
+	background-color: #DDD;
 }
 
 input[type="submit"] {
   color: white;
-  margin-top: 2%;
-  background-color: #1d0772;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #856fd7;
-  border-radius: 4px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 80%;
+  border-style: none;
+  background-color: #856fd7;
 }

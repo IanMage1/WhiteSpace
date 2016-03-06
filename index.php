@@ -1,19 +1,14 @@
 <?php include '_header.php' ?>
 
-<HTML>
-	<body>
-	
-	<?php
-			echo '<p id="score">Score: 0</p>';
-		?>
+	<div id="gameContent">
+		<h2 id="score"></h2>
 		<canvas id="game"></canvas>
-		<form action="javascript:" onsubmit="validateGuess(this)" class="guessForm">
-			Guess: <br>
+		<form action="javascript:" onsubmit="validateGuess(this)" id="guessForm">
+			<h3>Guess:</h3> <br>
 			<input type="text" name="guess" id="guess">
 			<input type="submit" value="submit">
 		</form>
 		<script src="JS/gamescript.js"></script>
-	</body>
-</HTML>
-
+	</div>
+		
 <?php include '_footer.php' ?>

@@ -42,30 +42,34 @@ function checkAuth($redirectIfNeeded) {
 	<link rel="stylesheet" type="text/css" href="CSS/newstyle.css">
 	<script src="JS/jquery-1.12.0.js"></script>
 </head>
+
 <body>
-<main>
-<nav>
+	<header>
+		<img src="Images/WS_Alpha.png" id="logo"></img>
+	
+		<nav>
+			<ul id="menu">
+				<li><a href="index.php">Home</a>
+				<?php
+					if (checkAuth(false) == "") {
+				?>
+				<li><a href="add_user.php">Register</a>
+				<li><a href="login.php">Login</a>
+				<li><a href="leaderboard.php">Leaderboard</a>
+				<?php
+					}
+					else {
+				?>
+				<li><a href="logout.php?cb=<?= microtime(true) ?>">Logout</a>
+				<?php
+					}
+				?>
+			</ul>
+		</nav>
+	</header>
 
-<div id="nav">
-<ul id="menu">
-<li><a href="index.php">Home</a>
-<?php
-if (checkAuth(false) == "") {
-?>
-<li><a href="add_user.php">Register</a>
-<li><a href="login.php">Login</a>
-<li><a href="leaderboard.php">Leaderboard</a>
-<?php
-}
-else {
-?>
-<li><a href="logout.php?cb=<?= microtime(true) ?>">Logout</a>
-<?php
-}
-?>
-
-</nav>
-<?php
-ini_set('display_errors', 'On');
-$mysqli = new mysqli("oniddb.cws.oregonstate.edu", "leonl-db", "mCvXbcy9WsvzmzJ9", "leonl-db");
-?>
+	<main>
+	<?php
+		ini_set('display_errors', 'On');
+		$mysqli = new mysqli("oniddb.cws.oregonstate.edu", "leonl-db", "mCvXbcy9WsvzmzJ9", "leonl-db");
+	?>
