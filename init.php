@@ -27,24 +27,10 @@ if ($stmt = $mysqli->prepare("insert into users(username,password,score) values(
 	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
     $stmt->execute();
 
-    $username = "loser";
-	$password = "losern";
-	$hashedPassword = base64_encode(hash('sha256',$password . $username));
-	$score = 0;
-	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
-    $stmt->execute();
-
     $username = "Louis";
 	$password = "leonl";
 	$hashedPassword = base64_encode(hash('sha256',$password . $username));
 	$score = 967;
-	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
-    $stmt->execute();
-
-    $username = "SuperWhiteSpaceWinnerMaster";
-	$password = "superm";
-	$hashedPassword = base64_encode(hash('sha256',$password . $username));
-	$score = 990849;
 	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
     $stmt->execute();
 
@@ -66,6 +52,20 @@ if ($stmt = $mysqli->prepare("insert into users(username,password,score) values(
 	$password = "swopet";
 	$hashedPassword = base64_encode(hash('sha256',$password . $username));
 	$score = 1000;
+	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
+    $stmt->execute();
+
+    $username = "loser";
+	$password = "losern";
+	$hashedPassword = base64_encode(hash('sha256',$password . $username));
+	$score = 0;
+	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
+    $stmt->execute();
+
+    $username = "SuperWhiteSpaceWinnerMaster";
+	$password = "superm";
+	$hashedPassword = base64_encode(hash('sha256',$password . $username));
+	$score = 990849;
 	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
     $stmt->execute();
 
