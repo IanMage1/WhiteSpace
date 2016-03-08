@@ -41,6 +41,7 @@ function checkAuth($redirectIfNeeded) {
 <head>
 	<link rel="stylesheet" type="text/css" href="CSS/newstyle.css">
 	<script src="JS/jquery-1.12.0.js"></script>
+	<script src="JS/jquery-ui-1.11.4/jquery-ui.js"></script>
 </head>
 
 <body>

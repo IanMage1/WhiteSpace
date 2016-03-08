@@ -8,7 +8,7 @@
 		<input type="text" name="username">
 		<li><label><br>Password <br></label> 
 		<input type="password" name="password">
-		<li><input type=submit>
+		<li><br><input type=submit>
 	</ul>
 	</form>
 </div>
