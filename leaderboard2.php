@@ -1,8 +1,3 @@
-<?php include("_header.php");?>
-
-<h1>Leaderboard</h1>
-<h4>The leaderboard updates every 2 seconds.</h4>
-
 <?php
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu", "leonl-db", "mCvXbcy9WsvzmzJ9", "leonl-db");
 
