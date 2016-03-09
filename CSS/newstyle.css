@@ -42,7 +42,6 @@ header nav #menu li a {
 	display: block;
 	text-decoration: none;
 	text-transform: uppercase;
-	text-align: center;
 	font-weight: bold;
 	padding: 0px 16px;
 }
@@ -53,6 +52,7 @@ header nav #menu li a:hover {
 }
 
 footer {
+  position: fixed;
   height: 10%;
   width: 100%;
   margin-top: 10%; 
@@ -67,7 +67,10 @@ footer {
 
 #gameContent {
 	width: 80%;
+	border-color: #EEE;
+	border-style: solid;
 	display: inline-block;
+	background: #EEE;
 	text-align: center;
 }
 
@@ -78,6 +81,23 @@ footer {
 #gameContent #guessForm {
 	width: 100%;
 	background-color: #EEE;
+}
+
+.ui-widget-overlay  .ui-front{
+	opacity: 0.5 !important;
+	filter: Alpha(Opacity=50) !important;
+	background: #888 !important;
+}
+
+.no-close .ui-dialog-titlebar-close {
+	display: none;
+}
+
+.dialog {
+	display: none;
+	background-color: #DDD;
+	text-align: center;
+	padding: 10px 10px 10px 10px;
 }
 
 #login {
@@ -123,11 +143,11 @@ th {
 }
 
 td {
-  border-style: solid;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  padding-left: 10%;
-  padding-right: 10%;
+	border-style: none;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 10%;
+	padding-right: 10%;
   
 }
 
@@ -165,5 +185,7 @@ input[type="submit"] {
   padding-bottom: 10px;
   width: 80%;
   border-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: 3A248C;
   background-color: #856fd7;
 }

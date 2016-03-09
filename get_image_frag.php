@@ -1,16 +1,6 @@
 <?php
 	session_start();
 	
-	/*
-	$address = $_GET["address"];
-	$x = $_GET["x"];
-	$y = $_GET["y"];
-	$w = $_GET["w"];
-	$h = $_GET["h"];
-	$wT = $_GET["wT"];
-	$hT = $_GET["hT"];
-	*/
-	
 	$x = $_GET["x"];
 	$y = $_GET["y"];
 	

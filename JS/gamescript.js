@@ -35,11 +35,16 @@ function Start() {
 			WriteScore(score);
 			
 			//set up canvas
-			c.width = logo.width;
-			c.height = logo.height;
-			ctx.fillColor = "#00";
-			ctx.fillRect(0, 0, logo.width, logo.height);
+			var bg = new Image();
+			bg.src = "Images/Texture256.png";
+			bg.onload = function() {
+				pat = ctx.createPattern(bg, "repeat");
 			
+				c.width = logo.width;
+				c.height = logo.height;
+				ctx.fillStyle = ctx.createPattern(bg, "repeat");
+				ctx.fillRect(0, 0, logo.width, logo.height);
+			};
 			//initialize tiles array
 			for(var i=0; i<logo.widthTiles; i++) {
 				tiles[i] = [];
@@ -55,7 +60,7 @@ function Start() {
 c.addEventListener('click',function(event) {
 	var clickPos = {
 		x: event.x-c.offsetLeft,
-		y: event.y-c.offsetTop,
+		y: event.y-c.offsetTop + window.scrollY
 	}
 	
 	var tile = tiles[Math.floor(clickPos.x/(c.clientWidth/logo.widthTiles))][Math.floor(clickPos.y/(c.clientHeight/logo.heightTiles))];
@@ -82,6 +87,7 @@ c.addEventListener('click',function(event) {
 	}
 });
 
+
 function WriteScore(s) {
 	$("#score").html("Score: " + s);
 }
@@ -89,17 +95,31 @@ function WriteScore(s) {
 function validateGuess(frm) {
 	var guess = document.getElementById("guess").value;
 	
+	//convert to lower case, remove spaces
+	guess = guess.toLowerCase();
+	guess = guess.replace(/\s+/g,'');
+	
 	$.ajax({url:"validate_guess.php?guess=" + guess + "&path=" + logo.address, 
 		type: "POST", 
 		success: function(result) {
 			var a = result.split(" ");
 			if(a[0] == "1") {
 				//user has won. display winning message here
+				//$("#displayScore").html("Your score: " + a[1]);
+				$("#winDialog").dialog({
+					dialogClass: "no-close",
+					draggable:false
+				});
 				console.log("That's correct!");
 			}
 			else if(a[0] == "2") {
 				//user is out of points. End the game.
 				console.log("game Over!")
+				$("#correctAnswer").html("The answer was: " + a[1]);
+				$("#lossDialog").dialog({
+					dialogClass: "no-close",
+					draggable:false
+				});
 				WriteScore(0);
 			}
 			else {
