@@ -65,7 +65,7 @@ if ($stmt = $mysqli->prepare("insert into users(username,password,score) values(
     $username = "SuperWhiteSpaceWinnerMaster";
 	$password = "superm";
 	$hashedPassword = base64_encode(hash('sha256',$password . $username));
-	$score = 990849;
+	$score = 999999999999;
 	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
     $stmt->execute();
 
@@ -86,6 +86,7 @@ if ($stmt = $mysqli->prepare("insert into users(username,password,score) values(
 print("initialized");
 
 } 
+
 else{
 	print("broken");
 }
