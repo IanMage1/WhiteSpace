@@ -30,9 +30,10 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 	if ($errorMsg == "") {
 		// ok, we can just insert the record
 		$hashedPassword = base64_encode(hash('sha256',$password . $username));
+           $score = 0;
 
-		if ($stmt = $mysqli->prepare("insert into users(username,password) values(?,?)")) {
-			$stmt->bind_param("ss", $username, $hashedPassword);
+		if ($stmt = $mysqli->prepare("insert into users(username,password,score) values(?,?,?)")) {
+			$stmt->bind_param("ssi", $username, $hashedPassword, $score);
 	    		$stmt->execute();
 			$stmt->close();
 			echo '<p>Created... You may now <a href="login.php">log in...</a></p>';
