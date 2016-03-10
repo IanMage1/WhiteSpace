@@ -1,0 +1,36 @@
+/*This is temporary CSS, more of a template for some small parts*/
+
+body {
+  font-family: sans-serif;
+  margin: 0px 0px 0px 0px;
+}
+
+nav {
+  background-color: #f0f0f0;
+  border-bottom: 1px solid black;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+nav a {
+  font-weight: bold;
+  padding-left: 3rem;
+}
+
+main {
+  padding: 3rem 3rem 3rem 3rem;
+}
+
+main li {
+  padding-bottom: 0.5rem;
+}
+
+main .inform ul
+{
+  list-style-type: none;
+}
+
+main .inform ul label {
+  display: inline-block;
+  width: 10rem;
+}
