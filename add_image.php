@@ -10,7 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES["myfile"])) {
   $filetype = $_FILES["myfile"]["type"];
   $size = getimagesize($tmpfile);
   $width = $size[0];
+  $width = $width - $width%20;
   $height = $size[1];
+  $height = $height - $height%20;
   $answer = $_POST["answer"];
 
   if ($filetype == "image/jpeg" && $filesize < 1048576) {
@@ -21,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES["myfile"])) {
         $countget->fetch();
         $countget->close();
       }
+      $image = imagecreatefromjpeg($tmpfile);
+      imagescale($image,$width,$height,IMG_BICUBIC_FIXED);
       $imagenum = $count + 1;
       $filename = "image" . "$imagenum" . ".jpg";
       $address = "$dir/$filename";
@@ -30,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES["myfile"])) {
       $stmt->execute();
       $stmt->close();
     }
-    move_uploaded_file($tmpfile,"$address");
+    imagejpeg($image,"$address");
     chmod("$address", 0644);
     echo "Successfully uploaded \"$answer\" as $filename";
   } else 
