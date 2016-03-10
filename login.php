@@ -30,11 +30,11 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 <div id="login">
 	<form method="post" action='login.php' class="inform">
-	<h2>Login</h2>
+	<h2>Log In</h2>
 	<ul>
 		<li><label>Username <br></label> <input type="text" name="username">
 		<li><label><br>Password <br></label> <input type="password" name="password">
-		<li><br><input type=submit>
+		<li><label>Log In<br></label><input type=submit>
 	</ul>
 
 	<input type="hidden" name="sendBackTo"
