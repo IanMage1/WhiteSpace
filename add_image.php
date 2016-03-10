@@ -38,12 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES["myfile"])) {
 }
 ?>
 
+<?php if (checkAuth(false) == "") { ?>
 <form method="post" action=""
 enctype="multipart/form-data">
 <li>Choose file: <input type="file" name="myfile">
 <li><label>Answer: </label><input type="text" name="answer">
 <li><input type="submit" value="Upload">
 </form>
+<?php } else {
+$sendBackTo = isset($_REQUEST["sendBackTo"]) ? $_REQUEST["sendBackTo"] : "login.php";
+echo "<script>location.replace(".json_encode($sendBackTo).");</script>";
+} ?>
 
 <?php include("_footer.php");?>
 
