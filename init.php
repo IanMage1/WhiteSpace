@@ -62,10 +62,10 @@ if ($stmt = $mysqli->prepare("insert into users(username,password,score) values(
 	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
     $stmt->execute();
 
-    $username = "SuperWhiteSpaceWinnerMaster";
+    $username = "SuperWhiteSpaceMasterWinner";
 	$password = "superm";
 	$hashedPassword = base64_encode(hash('sha256',$password . $username));
-	$score = 999999999999;
+	$score = 2147483647;
 	$stmt->bind_param("ssi", $username, $hashedPassword, $score);
     $stmt->execute();
 
