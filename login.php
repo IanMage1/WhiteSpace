@@ -34,7 +34,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 	<ul>
 		<li><label>Username <br></label> <input type="text" name="username">
 		<li><label><br>Password <br></label> <input type="password" name="password">
-		<li><label>Log In<br></label><input type=submit>
+		<li><br><input type=submit value="Log In">
 	</ul>
 
 	<input type="hidden" name="sendBackTo"
