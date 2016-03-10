@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES["myfile"])) {
 }
 ?>
 
-<?php if (checkAuth(false) == "") { ?>
+<?php if (!(checkAuth(false) == "")) { ?>
 <form method="post" action=""
 enctype="multipart/form-data">
 <li>Choose file: <input type="file" name="myfile">
