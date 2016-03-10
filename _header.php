@@ -61,7 +61,7 @@ function checkAuth($redirectIfNeeded) {
 					}
 					else {
 				?>
-				<li><a href="logout.php?cb=<?= microtime(true) ?>">Logout</a>
+				<li><a href="logout.php?cb=<?= microtime(true) ?>?sendBackTo=<? $currentUrl ?>">Logout</a>
 				<li><a href="leaderboard.php">Leaderboard</a>
 				<li><a href="add_image.php">Upload</a>
 				<?php
