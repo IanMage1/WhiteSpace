@@ -1,14 +1,12 @@
 <?php include '_header.php' ?>
 
-<h1>Logout</h1>
+<meta http-equiv="refresh" content="0; URL='http://web.engr.oregonstate.edu/~selbiew/index.php'" />
 
 <?php
-
 $_SESSION["uid"] = "";
-
 ?>
 
-<p>You are logged out.</p>
+<p>Redirecting to Home Page...</p>
 
 
 <?php include '_footer.php' ?>
